@@ -1,18 +1,67 @@
 
-let money = prompt ('Ваш бюджет на месяц?','');
-let time = prompt ("Введите дату в формате YYYY-MM-DD", "");
-var exprenses;
-var firstQuetion = prompt ('“Введите обязательную статью расходов в этом месяце”','');
-var secondQuetion = prompt ('“Во сколько обойдется?”','');
+let money = +prompt ('Ваш бюджет на месяц?',''),
+    time = prompt ("Введите дату в формате YYYY-MM-DD", "");
 
 let appData = {
-    бюджет: money,
-    timeData: time,
-    обязательныеРасходы:  exprenses = {
-        firstQuetion: "ответ на первый вопрос",
-        secondQuetion: "ответ на второй вопрос"
-     },
-     optionalExpenses: "",
-     допДоход: income=[,,,]
-}
-alert (+money/30);
+  budget: money,
+  timeData: time,
+  expenses : {},
+  optionalExpenses: {},
+  income : [],
+  savings: false
+ }
+  for (let i=0; i<2; i++){
+        let a = prompt ('“Введите обязательную статью расходов в этом месяце”',''),
+            b = prompt ('“Во сколько обойдется?”','');
+        if ((typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+            && a != '' && b != '' && a.length < 50) {
+            console.log('done');
+            appData.expenses[a] = b;
+        } else {   
+                confirm ('Введите пожалуйста расходы');
+                i=i-1;      
+        }
+  }
+// let i=0;
+// do {    
+//         i++;
+//         let a = prompt ('“Введите обязательную статью расходов в этом месяце”',''),
+//         b = prompt ('“Во сколько обойдется?”','');  
+//         if ((typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+//             && a != '' && b != '' && a.length < 50) {
+//             console.log('done');
+//             appData.expenses[a] = b;
+//         } else {   
+//                 confirm ('Введите пожалуйста расходы');
+//                 i=i-1;      
+//         }
+// } while (i<2)
+//  while (i<2) {
+//         i++;
+//                 let a = prompt ('“Введите обязательную статью расходов в этом месяце”',''),
+//                 b = prompt ('“Во сколько обойдется?”','');  
+//                 if ((typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+//                     && a != '' && b != '' && a.length < 50) {
+//                     console.log('done');
+//                     appData.expenses[a] = b;
+//                 } else {   
+//                         confirm ('Введите пожалуйста расходы');
+//                         i=i-1;      
+//                 }
+//  }
+
+appData.moneyPerDay=appData.budget/30;
+
+ alert ("Ежедневный бюджет: " + appData.moneyPerDay);
+
+ if (appData.moneyPerDay <100) {
+         console.log ('минимальный уровень достатка');
+ } else if (appData.moneyPerDay>100 && appData.moneyPerDay < 2000) {
+         console.log ('средний уровень достатка');
+ } else if (appData.moneyPerDay > 2000) {
+         console.log ('высокий уровень достатка');
+ } else {
+         console.log ('произошла ошибка');
+ }
+
+
